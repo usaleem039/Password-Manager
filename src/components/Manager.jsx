@@ -26,11 +26,11 @@ const Manager = () => {
   const showPassword = () => {
     // alert("Password will be showed")
 
-    if (ref.current.src.includes("src/icons/show.svg")) {
-      ref.current.src = "src/icons/hide.svg";
+    if (ref.current.src.includes("public/icons/show.svg")) {
+      ref.current.src = "public/icons/hide.svg";
       passwordRef.current.type = "password";
     } else {
-      ref.current.src = "src/icons/show.svg";
+      ref.current.src = "public/icons/show.svg";
       passwordRef.current.type = "text";
     }
   };
@@ -176,7 +176,7 @@ const Manager = () => {
                 <img
                   ref={ref}
                   onClick={showPassword}
-                  src="src/icons/hide.svg"
+                  src="public/icons/hide.svg"
                   alt="hide"
                 />
               </span>
@@ -207,8 +207,8 @@ const Manager = () => {
           </div>
         )}
         {passwordArray.length != 0 && (
-          <table className="overflow-x-scroll table-auto max-w-5xl min-w-40   m-6 mx-auto pl-4 seconddiv">
-            <thead className="bg-purple-700 text-white">
+          <table className="overflow-x-scroll table-auto max-w-5xl min-w-40  m-6 mx-auto pl-4 seconddiv">
+            <thead className="bg-purple-700 text-white border border-black " >
               <tr>
                 <th className="site">Site</th>
                 <th>Username</th>
@@ -217,7 +217,7 @@ const Manager = () => {
               </tr>
             </thead>
 
-            <tbody className="md:mb- tabledata">
+            <tbody className="md:mb- tabledata ">
               {passwordArray.map((item) => {
                 return (
                   <tr key={item.id}>
@@ -240,7 +240,7 @@ const Manager = () => {
                             copyToClipboard(item.username);
                           }}
                           className="w-4 hover:bg-purple-300"
-                          src="src\icons\copy.svg"
+                          src="public\icons\copy.svg"
                           alt="copy me"
                         />
                       </button>
@@ -257,8 +257,8 @@ const Manager = () => {
                           onClick={showPasswordDisplay}
                           src={
                             isPasswordVisible
-                              ? "src/icons/hide.svg"
-                              : "src/icons/show.svg"
+                              ? "public/icons/hide.svg"
+                              : "public/icons/show.svg"
                           } // Change icon based on state
                           alt={isPasswordVisible ? "hide" : "show"}
                         />
