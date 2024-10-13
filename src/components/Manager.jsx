@@ -3,12 +3,19 @@ import React, { useRef, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import './managerstyle.css';
+// import './managerstyle.css';
+
+
+
+
+
 
 const Manager = () => {
   const [form, setform] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setpasswordArray] = useState([]);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
@@ -229,7 +236,7 @@ const Manager = () => {
 
                     <td className=" pr-2  ">
                       <button
-                        title="Copy"
+                       
                         onClick={() => copyToClipboard(item.username)}
                         className="flex gap-3"
                       >
