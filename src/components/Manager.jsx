@@ -177,7 +177,7 @@ const Manager = () => {
                   ref={ref}
                   onClick={showPassword}
                   src="public/icons/hide.svg"
-                  alt="hide"
+                 
                 />
               </span>
             </div>
