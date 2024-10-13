@@ -3,19 +3,12 @@ import React, { useRef, useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import './managerstyle.css';
-
-
-
-
-
+import './managerstyle.css';
 
 const Manager = () => {
   const [form, setform] = useState({ site: "", username: "", password: "" });
   const [passwordArray, setpasswordArray] = useState([]);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-
-
 
   useEffect(() => {
     let passwords = localStorage.getItem("passwords");
@@ -206,108 +199,116 @@ const Manager = () => {
       </div>
 
       {/* **************************************** */}
+      <div className="passwords min-h-60 max-h-60 w-full overflow-y-scroll border border-black">
+  {passwordArray.length === 0 && (
+    <div className="text-center text-xl mt-6">No Passwords to display</div>
+  )}
+  {passwordArray.length !== 0 && (
+    <table className="table-auto w-full sm:w-2/3 m-6 mx-auto pl-4 seconddiv border border-black">
+      <thead className="bg-purple-700 text-white">
+        <tr>
+          <th className="p-2">Site</th>
+          <th className="p-2">Username</th>
+          <th className="p-2">Passwords</th>
+          <th className="p-2">Actions</th>
+        </tr>
+      </thead>
 
-      <div className="passwords  min-h-60 max-h-60 overflow-y-scroll  ">
-        {passwordArray.length === 0 && (
-          <div className=" text-center text-xl mt-6">
-            No Passwords to display
-          </div>
-        )}
-        {passwordArray.length != 0 && (
-          <table className="overflow-x-scroll table-auto max-w-5xl min-w-40  m-6 mx-auto pl-4 seconddiv">
-            <thead className="bg-purple-700 text-white border border-black " >
-              <tr>
-                <th className="site">Site</th>
-                <th>Username</th>
-                <th>Passwords</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
+      <tbody className="text-center">
+        {passwordArray.map((item) => {
+          return (
+            <tr key={item.id} className="border-b">
+              {/* SITE */}
+              <td className="px-4 py-2">
+                <a
+                  className="block truncate text-blue-600"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={item.site}
+                >
+                  {item.site}
+                </a>
+              </td>
 
-            <tbody className="md:mb- tabledata ">
-              {passwordArray.map((item) => {
-                return (
-                  <tr key={item.id}>
-                    <td className=" pr-2">
-                      <a target="_blank" href={item.site}>
-                        {item.site}
-                      </a>
-                    </td>
+              {/* USERNAME */}
+              <td className="pr-2">
+                <button className="flex gap-3 tooltip">
+                  {item.username.length > 10 ? (
+                    <>
+                      {item.username.slice(0, 10)}...
+                      <span className="tooltiptext">{item.username}</span>
+                    </>
+                  ) : (
+                    item.username
+                  )}
+                  <img
+                    onClick={(e) => {
+                      e.stopPropagation(); // Prevent triggering the button's event
+                      copyToClipboard(item.username);
+                    }}
+                    className="w-4 hover:bg-purple-300"
+                    src="public/icons/copy.svg"
+                    alt="copy me"
+                  />
+                </button>
+              </td>
 
-                    <td className=" pr-2  ">
-                      <button
-                       
-                        onClick={() => copyToClipboard(item.username)}
-                        className="flex gap-3"
-                      >
-                        {item.username}{" "}
-                        <img
-                          onClick={(e) => {
-                            e.stopPropagation(); // Prevent triggering the button's event
-                            copyToClipboard(item.username);
-                          }}
-                          className="w-4 hover:bg-purple-300"
-                          src="public\icons\copy.svg"
-                          alt="copy me"
-                        />
-                      </button>
-                    </td>
+              {/* PASSWORD */}
+              <td className="flex items-center justify-center gap-3 px-4 py-2">
+                <span>
+                  {isPasswordVisible
+                    ? item.password
+                    : "*".repeat(item.password?.length || 0)}
+                </span>
+                <img
+                  ref={displayRef}
+                  onClick={showPasswordDisplay}
+                  className="w-4 hover:bg-purple-300 cursor-pointer"
+                  src={
+                    isPasswordVisible
+                      ? "public/icons/hide.svg"
+                      : "public/icons/show.svg"
+                  }
+                  alt={isPasswordVisible ? "hide" : "show"}
+                />
+              </td>
 
-                    <td className="flex pr-2">
-                      {isPasswordVisible
-                        ? item.password
-                        : "*".repeat(item.password?.length || 0)}
+              {/* ACTIONS */}
+              <td className="px-4 py-2">
+                <div className="flex justify-center gap-2 sm:gap-4">
+                  <span
+                    onClick={() => editPassword(item.id)}
+                    className="cursor-pointer"
+                  >
+                    <lord-icon
+                      src="https://cdn.lordicon.com/exymduqj.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#c7166f"
+                      style={{ width: "24px", height: "24px" }} // Smaller size for smaller screens
+                    ></lord-icon>
+                  </span>
+                  <span
+                    onClick={() => deletePassword(item.id)}
+                    className="cursor-pointer"
+                  >
+                    <lord-icon
+                      src="https://cdn.lordicon.com/hwjcdycb.json"
+                      trigger="hover"
+                      colors="primary:#121331,secondary:#c7166f"
+                      style={{ width: "24px", height: "24px" }} // Smaller size for smaller screens
+                    ></lord-icon>
+                  </span>
+                </div>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  )}
+</div>
 
-                      <span className="ml-4">
-                        <img
-                          ref={displayRef}
-                          onClick={showPasswordDisplay}
-                          src={
-                            isPasswordVisible
-                              ? "public/icons/hide.svg"
-                              : "public/icons/show.svg"
-                          } // Change icon based on state
-                          alt={isPasswordVisible ? "hide" : "show"}
-                        />
-                      </span>
-                    </td>
 
-                    <td className="text-center ">
-                      <span
-                        onClick={() => {
-                          editPassword(item.id);
-                        }}
-                      >
-                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                        <lord-icon
-                          src="https://cdn.lordicon.com/exymduqj.json"
-                          trigger="hover"
-                          colors="primary:#121331,secondary:#c7166f"
-                          style={{ width: "30px", height: "30px" }}
-                        ></lord-icon>
-                      </span>
-                      <span
-                        className="ml-2"
-                        onClick={() => {
-                          deletePassword(item.id);
-                        }}
-                      >
-                        <script src="https://cdn.lordicon.com/lordicon.js"></script>
-                        <lord-icon
-                          src="https://cdn.lordicon.com/hwjcdycb.json"
-                          trigger="hover"
-                          colors="primary:#121331,secondary:#c7166f"
-                          style={{ width: "30px", height: "30px" }}
-                        ></lord-icon>
-                      </span>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        )}
-      </div>
     </>
   );
 };

@@ -1,32 +1,17 @@
 
-@media screen and (max-width: 431px) {
-   
+@media (max-width: 450px) {
+  .passwords .flex {
+    gap: 0rem; /* Reduce the gap between Lord icons on small screens */
+    border: 2px solid red;
+    padding-left: 0;
+    margin: 0;
     
-    .tabledata{
-        /* border: 2px solid blue; */
-        overflow-y: scroll;
-    }
-}
-
-
-@media (max-width: 530px) and (min-width: 450px) {
-   
-    .seconddiv{
-        /* border: 2px solid red; */
-        max-width: 25rem;
-        margin-bottom: 5rem; 
-        overflow-y: scroll;
-      }
-      
   }
 
-  @media screen and (max-width: 640px) and (min-width: 535px) {
-   
-    .seconddiv{
-      /* border: 2px solid green; */
-      width: 32rem;
-      margin-bottom: 3rem;
-      overflow-y: scroll;
-    }
-    
+  .passwords .lord-icon {
+    width: 20px; /* Further reduce icon size on very small screens */
+    height: 20px;
+    padding-left: 0;
+    margin: 0;
+  }
 }
