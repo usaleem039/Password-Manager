@@ -177,7 +177,7 @@ const Manager = () => {
                   ref={ref}
                   onClick={showPassword}
                   src="public/icons/hide.svg"
-                  alt="hide"
+                 
                 />
               </span>
             </div>
@@ -248,7 +248,7 @@ const Manager = () => {
                     }}
                     className="w-4 hover:bg-purple-300"
                     src="public/icons/copy.svg"
-                    alt="copy me"
+                    
                   />
                 </button>
               </td>
@@ -269,7 +269,7 @@ const Manager = () => {
                       ? "public/icons/hide.svg"
                       : "public/icons/show.svg"
                   }
-                  alt={isPasswordVisible ? "hide" : "show"}
+                  
                 />
               </td>
 
