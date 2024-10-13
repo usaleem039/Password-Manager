@@ -199,12 +199,12 @@ const Manager = () => {
       </div>
 
       {/* **************************************** */}
-      <div className="passwords min-h-60 max-h-60 w-full overflow-y-scroll border border-black">
+      <div className="passwords min-h-60 max-h-60 w-full overflow-y-scroll ">
   {passwordArray.length === 0 && (
     <div className="text-center text-xl mt-6">No Passwords to display</div>
   )}
   {passwordArray.length !== 0 && (
-    <table className="table-auto w-full sm:w-2/3 m-6 mx-auto pl-4 seconddiv border border-black">
+    <table className="table-auto w-full sm:w-2/3 m-6 mx-auto pl-4 seconddiv">
       <thead className="bg-purple-700 text-white">
         <tr>
           <th className="p-2">Site</th>
