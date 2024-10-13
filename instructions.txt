@@ -1,0 +1,16 @@
+                    
+                    Personal Password Manager
+
+
+Overall Structure:
+
+Functionality: 
+The app allows users to add, edit, delete, and copy passwords, which is the core functionality expected in a password manager. The use of localStorage for persistence is a good choice.
+
+
+State Management: 
+You're using the useState and useEffect hooks effectively for managing form state and handling side effects (like loading passwords from localStorage).
+
+
+UI Feedback: 
+Using react-toastify for notifications enhances the user experience by providing feedback on actions.
