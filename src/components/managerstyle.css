@@ -2,7 +2,7 @@
 @media (max-width: 450px) {
   .passwords .flex {
     gap: 0rem; /* Reduce the gap between Lord icons on small screens */
-    border: 2px solid red;
+   
     padding-left: 0;
     margin: 0;
     
