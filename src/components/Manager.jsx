@@ -26,11 +26,11 @@ const Manager = () => {
   const showPassword = () => {
     // alert("Password will be showed")
 
-    if (ref.current.src.includes("public/icons/show.svg")) {
-      ref.current.src = "public/icons/hide.svg";
+    if (ref.current.src.includes("icons/show.svg")) {
+      ref.current.src = "icons/hide.svg";
       passwordRef.current.type = "password";
     } else {
-      ref.current.src = "public/icons/show.svg";
+      ref.current.src = "icons/show.svg";
       passwordRef.current.type = "text";
     }
   };
@@ -176,7 +176,7 @@ const Manager = () => {
                 <img
                   ref={ref}
                   onClick={showPassword}
-                  src="public/icons/hide.svg"
+                  src="icons/hide.svg"
                  
                 />
               </span>
@@ -247,7 +247,7 @@ const Manager = () => {
                       copyToClipboard(item.username);
                     }}
                     className="w-4 hover:bg-purple-300"
-                    src="public/icons/copy.svg"
+                    src="icons/copy.svg"
                     
                   />
                 </button>
@@ -266,8 +266,8 @@ const Manager = () => {
                   className="w-4 hover:bg-purple-300 cursor-pointer"
                   src={
                     isPasswordVisible
-                      ? "public/icons/hide.svg"
-                      : "public/icons/show.svg"
+                      ? "icons/hide.svg"
+                      : "icons/show.svg"
                   }
                   
                 />
