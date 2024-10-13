@@ -11,7 +11,6 @@
   .passwords .lord-icon {
     width: 20px; /* Further reduce icon size on very small screens */
     height: 20px;
-    padding-left: 0;
     margin: 0;
   }
 }
