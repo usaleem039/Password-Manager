@@ -3,7 +3,7 @@
   .passwords .flex {
     gap: 0rem; /* Reduce the gap between Lord icons on small screens */
    
-    padding-left: 0;
+    padding-left: 3px;
     margin: 0;
     
   }
